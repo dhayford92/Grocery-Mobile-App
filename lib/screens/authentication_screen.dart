@@ -36,7 +36,7 @@ class _AuthenticationState extends State<Authentication> {
               ),
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/images/bg1.jpg'),
+                  image: AssetImage('assets/images/bg.jpg'),
                   fit: BoxFit.cover,
                 ),
               ),

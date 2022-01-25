@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:grocerymobileapp/components/buttons.dart';
 import 'package:grocerymobileapp/components/decorators.dart';
+import 'package:grocerymobileapp/screens/mainscreen.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -21,7 +22,7 @@ class _LoginState extends State<Login> {
       final form = formKey.currentState;
       if (form!.validate()) {
         form.save();
-        Navigator.of(context).pushReplacementNamed('routeName');
+        Navigator.of(context).pushReplacementNamed(MainScreen.id);
       } else {
         print('error message');
       }
@@ -50,7 +51,9 @@ class _LoginState extends State<Login> {
               height: 60,
               child: AuthButton(
                 title: 'Login',
-                onPress: () => doLogin,
+                onPress: () {
+                  doLogin;
+                },
               ),
             ),
             const SizedBox(height: 5),

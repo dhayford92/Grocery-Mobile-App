@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:grocerymobileapp/screens/home.dart';
 
 import 'screens/authentication_screen.dart';
 
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
       home: const SplashScreen(),
       routes: {
         Authentication.id: (context) => const Authentication(),
+        HomePage.id: (context)=> const HomePage(),
       },
     );
   }
@@ -38,7 +40,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(const Duration(seconds: 4),
-        () => Navigator.of(context).pushReplacementNamed(Authentication.id));
+        () => Navigator.of(context).pushReplacementNamed(HomePage.id));
   }
   @override
   Widget build(BuildContext context) {
@@ -75,7 +77,7 @@ class _SplashScreenState extends State<SplashScreen> {
               left: 45,
               right: 40,
               child: Text(
-                'Groscery App',
+                'Grocery App',
                 softWrap: true,
                 style: Theme.of(context).textTheme.headline3!.copyWith(
                       fontWeight: FontWeight.bold,

@@ -26,3 +26,18 @@ authdecorator(String hint, IconData icon) => InputDecoration(
         borderSide: const BorderSide(color: Colors.red),
       ),
     );
+
+searchDecoration() => InputDecoration(
+      hintText: 'search here',
+      filled: true,
+      fillColor: bgColour,
+      suffixIcon: const Icon(Icons.search_outlined, size: 20),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(20),
+        borderSide: BorderSide(color: primaryColour),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(20),
+        borderSide: BorderSide(color: primaryColour),
+      ),
+    );
