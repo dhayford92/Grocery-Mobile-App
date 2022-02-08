@@ -20,7 +20,7 @@ class Category {
 
 
 
-
+// list of categories
 List<Category> cate_list = [
   Category(
     id: 0,

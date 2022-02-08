@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:grocerymobileapp/screens/cart_page.dart';
 import 'package:grocerymobileapp/screens/home.dart';
 
 import 'screens/authentication_screen.dart';
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
       routes: {
         Authentication.id: (context) => const Authentication(),
         HomePage.id: (context)=> const HomePage(),
+        CartScreen.id: (context)=> const CartScreen(),
       },
     );
   }

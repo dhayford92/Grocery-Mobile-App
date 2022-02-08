@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grocerymobileapp/components/colours.dart';
+import 'package:grocerymobileapp/screens/cart_page.dart';
 
 class CartIcon extends StatefulWidget {
   const CartIcon({Key? key}) : super(key: key);
@@ -15,7 +16,7 @@ class _CartIconState extends State<CartIcon> {
       children: [
         IconButton(
           onPressed: () {
-            Navigator.of(context).pushNamed('routeName');
+            Navigator.of(context).pushNamed(CartScreen.id);
           },
           icon: Icon(
             Icons.shopping_bag_outlined,
