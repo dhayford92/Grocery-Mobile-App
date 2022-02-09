@@ -41,3 +41,18 @@ searchDecoration() => InputDecoration(
         borderSide: BorderSide(color: primaryColour),
       ),
     );
+
+couponDecoration() => InputDecoration(
+      hintText: 'coupon code here',
+      labelText: 'Coupon',
+      filled: true,
+      fillColor: bgColour,
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(20),
+        borderSide: BorderSide(color: primaryColour),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(20),
+        borderSide: BorderSide(color: primaryColour),
+      ),
+    );

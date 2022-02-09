@@ -41,12 +41,12 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     return Scaffold(
       body: SafeArea(
           child: Container(
-        color: Colors.blueAccent,
+        color: Color(widget.product.colorlabel!.haxCode.hashCode),
         child: Column(
           children: [
             //menu and image
             SizedBox(
-              height: mediaSize(context).height / 2,
+              height: mediaSize(context).height / 2 - 30,
               child: Stack(
                 children: [
                   Positioned(
@@ -58,7 +58,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       children: [
                         IconButton(
                           onPressed: () => Navigator.of(context).pop(),
-                          icon: const Icon(Icons.arrow_back_ios_new),
+                          icon: Icon(Icons.arrow_back_ios_new, color: primaryColour),
                         ),
                         const CartIcon()
                       ],
@@ -108,17 +108,20 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       style: Theme.of(context).textTheme.subtitle1!.copyWith(
                           fontWeight: FontWeight.bold, color: primaryColour),
                     ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 15),
                     //product description
-                    Text(
-                      '${widget.product.description}',
-                      softWrap: true,
-                      style: Theme.of(context)
-                          .textTheme
-                          .subtitle1!
-                          .copyWith(fontWeight: FontWeight.bold),
+                    SizedBox(
+                      height: 100,
+                      child: Text(
+                        '${widget.product.description}',
+                        softWrap: true,
+                        style: Theme.of(context)
+                            .textTheme
+                            .subtitle1!
+                            .copyWith(fontWeight: FontWeight.w500),
+                      ),
                     ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 15),
                     //quantity and price
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -166,7 +169,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                           ),
                       ],
                     ),
-                    const SizedBox(height: 25),
+                    const SizedBox(height: 20),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -180,7 +183,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         )
                       ],
                     ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 10),
                   ],
                 ),
               ),

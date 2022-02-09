@@ -1,6 +1,3 @@
-
-
-
 import 'category_model.dart';
 
 class Product {
@@ -16,7 +13,6 @@ class Product {
   bool? isActive;
   Colorlabel? colorlabel;
   List<Category>? category;
-  
 
   Product({
     this.id,
@@ -83,7 +79,7 @@ class Colorlabel {
   String? title;
   String? haxCode;
 
-  Colorlabel({this.id, this.title, this.haxCode});
+  Colorlabel({this.id, this.title, required this.haxCode});
 
   Colorlabel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -101,68 +97,111 @@ class Colorlabel {
 }
 
 
+/*
+
+Default list of the models
+
+*/
 
 
-//list of product
-Colorlabel? colour;
+
+//list of colors
+List<Colorlabel> colour=[
+  Colorlabel(
+    title: 'green',
+    haxCode: '0xff61D095',
+  ),
+  Colorlabel(
+    title: 'pitch',
+    haxCode: '0xffDFB9D6',
+  ),
+  Colorlabel(
+    title: 'yellow',
+    haxCode: '0xffFBE689',
+  ),
+  Colorlabel(
+    title: 'red',
+    haxCode: '0xffEF8089',
+  ),
+  Colorlabel(
+    title: 'purple',
+    haxCode: '0xffCE78C0',
+  ),
+];
+String des =
+    'Something to describ the product here, Something to describ the product here, Something to describ the product here';
 
 List<Product> prod_list = [
   Product(
     id: 0,
     title: 'Apple',
+    description: des,
     category: cate_list,
     price: 12.00,
-    colorlabel: colour,
+    colorlabel: colour[0],
     discountPrice: 0.00,
     image: 'assets/images/fruit.jpg',
-    isActive: true
-    ),
+    isActive: true,
+    quantity: 12,
+  ),
   Product(
     id: 1,
     title: 'Banana',
+    description: des,
     category: cate_list,
     price: 12.00,
     discountPrice: 10.00,
-    colorlabel: colour,
+    colorlabel: colour[3],
     image: 'assets/images/fruit.jpg',
-    isActive: false
+    isActive: false,
+    quantity: 2,
   ),
   Product(
     id: 2,
     title: 'Pear',
+    description: des,
     category: cate_list,
     price: 12.00,
     discountPrice: 0.00,
-    colorlabel: colour,
+    colorlabel: colour[2],
     image: 'assets/images/fruit.jpg',
-    isActive: true
+    isActive: true,
+    quantity: 1,
   ),
   Product(
     id: 3,
     title: 'Mango',
+    description: des,
     category: cate_list,
     price: 12.00,
     discountPrice: 8.00,
-    colorlabel: colour,
+    colorlabel: colour[1],
     image: 'assets/images/fruit.jpg',
-    isActive: false
+    isActive: false,
+    quantity: 4,
   ),
   Product(
     id: 4,
     title: 'Tomato',
+    description: des,
     category: cate_list,
     price: 15.00,
     discountPrice: 0.00,
-    colorlabel: colour,
-    image: 'assets/images/fruit.jpg'
+    colorlabel: colour[4],
+    image: 'assets/images/fruit.jpg',
+    isActive: true,
+    quantity: 10,
   ),
   Product(
     id: 5,
     title: 'ginger',
+    description: des,
     category: cate_list,
     price: 20.00,
     discountPrice: 10.00,
-    colorlabel: colour,
-    image: 'assets/images/fruit.jpg'
+    colorlabel: colour[2],
+    image: 'assets/images/fruit.jpg',
+    isActive: false,
+    quantity: 2,
   ),
 ];

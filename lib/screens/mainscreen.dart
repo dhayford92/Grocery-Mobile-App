@@ -4,6 +4,8 @@ import 'package:grocerymobileapp/components/colours.dart';
 import 'package:grocerymobileapp/screens/home.dart';
 import 'package:grocerymobileapp/utils/carticon.dart';
 
+import 'authentication_screen.dart';
+
 class MainScreen extends StatefulWidget {
   static String id = 'main';
   MainScreen({Key? key, required this.child}) : super(key: key);
@@ -30,29 +32,86 @@ class _MainScreenState extends State<MainScreen> {
           padding: const EdgeInsets.all(10),
           children: [
             Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const SizedBox(height: 10),
+                const SizedBox(height: 20),
+                //compang logo nad name
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const CircleAvatar(
+                      backgroundImage: AssetImage('assets/images/splash.jpg'),
+                      radius: 20,
+                    ),
+                    const SizedBox(width: 20),
+                    Text(
+                      'Grocery App',
+                      softWrap: true,
+                      maxLines: 1,
+                      style: Theme.of(context).textTheme.subtitle2,
+                    ),
+                  ],
+                ),
+
+                const SizedBox(height: 20),
                 Text(
                   'Denzel Hayford',
                   softWrap: true,
                   maxLines: 1,
-                  style: Theme.of(context).textTheme.headline5,
+                  style: Theme.of(context).textTheme.subtitle1,
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 5),
                 Text(
                   '+233 00 000 0000',
                   softWrap: true,
                   maxLines: 1,
-                  style: Theme.of(context).textTheme.subtitle1,
+                  style: Theme.of(context).textTheme.subtitle2,
                 ),
               ],
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 30),
+            //menu list
             MenuListButton(
-              icon: Icons.home,
+              icon: Icons.home_outlined,
               title: 'Home',
               onPress: () => doOpenPage(HomePage.id),
+            ),
+            MenuListButton(
+              icon: Icons.shopping_bag_outlined,
+              title: 'Orders',
+              onPress: () => doOpenPage(HomePage.id),
+            ),
+            MenuListButton(
+              icon: Icons.favorite_border_outlined,
+              title: 'Favorite',
+              onPress: () => doOpenPage(HomePage.id),
+            ),
+            MenuListButton(
+              icon: Icons.person_outlined,
+              title: 'Profile',
+              onPress: () => doOpenPage(HomePage.id),
+            ),
+            MenuListButton(
+              icon: Icons.mail_outlined,
+              title: 'Notifications',
+              onPress: () => doOpenPage(HomePage.id),
+            ),
+            MenuListButton(
+              icon: Icons.help_outlined,
+              title: 'Help',
+              onPress: () => doOpenPage(HomePage.id),
+            ),
+            MenuListButton(
+              icon: Icons.info_outline,
+              title: 'About Us',
+              onPress: () => doOpenPage(HomePage.id),
+            ),
+            const SizedBox(height: 200),
+            CustomButton(
+              icon: Icons.logout_outlined,
+              title: 'Logout',
+              onPress: () =>
+                  Navigator.of(context).pushReplacementNamed(Authentication.id),
             ),
           ],
         ),

@@ -4,6 +4,7 @@ import 'package:grocerymobileapp/components/colours.dart';
 import 'package:grocerymobileapp/components/decorators.dart';
 import 'package:grocerymobileapp/models/cartitem_model.dart';
 import 'package:grocerymobileapp/models/product_model.dart';
+import 'package:grocerymobileapp/screens/checkout.dart';
 import 'package:grocerymobileapp/widgets/cartitem_card.dart';
 
 class CartScreen extends StatefulWidget {
@@ -106,7 +107,7 @@ class _CartScreenState extends State<CartScreen> {
               child: CustomButton(
                   icon: Icons.check_box_outlined,
                   title: 'Checkout',
-                  onPress: () {}),
+                  onPress: () =>Navigator.of(context).pushNamed(CheckoutScreen.id),),
             ),
           )
         ],

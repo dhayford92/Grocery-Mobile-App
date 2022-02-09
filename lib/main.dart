@@ -1,7 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:grocerymobileapp/components/colours.dart';
 import 'package:grocerymobileapp/screens/cart_page.dart';
+import 'package:grocerymobileapp/screens/checkout.dart';
 import 'package:grocerymobileapp/screens/home.dart';
 
 import 'screens/authentication_screen.dart';
@@ -19,12 +21,22 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Groscery App',
-      theme: ThemeData.light(),
+      theme: ThemeData.light().copyWith(
+          scaffoldBackgroundColor: bgColour,
+          primaryColor: primaryColour,
+          buttonColor: primaryColour,
+          elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(primaryColour)
+            ),
+          ),
+          canvasColor: Colors.white),
       home: const SplashScreen(),
       routes: {
         Authentication.id: (context) => const Authentication(),
-        HomePage.id: (context)=> const HomePage(),
-        CartScreen.id: (context)=> const CartScreen(),
+        HomePage.id: (context) => const HomePage(),
+        CartScreen.id: (context) => const CartScreen(),
+        CheckoutScreen.id: (context) => const CheckoutScreen(),
       },
     );
   }
@@ -44,9 +56,9 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer(const Duration(seconds: 4),
         () => Navigator.of(context).pushReplacementNamed(HomePage.id));
   }
+
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body: SafeArea(
@@ -69,7 +81,6 @@ class _SplashScreenState extends State<SplashScreen> {
                 image: DecorationImage(
                   image: AssetImage('assets/images/splash.jpg'),
                   fit: BoxFit.cover,
-                  
                 ),
               ),
             ),
@@ -93,3 +104,11 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 }
+
+
+//thank you page
+//favorite page
+//order page
+//notifications page
+//profile page
+//help page
