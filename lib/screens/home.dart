@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:grocerymobileapp/components/colours.dart';
 import 'package:grocerymobileapp/components/decorators.dart';
-import 'package:grocerymobileapp/models/category_model.dart';
-import 'package:grocerymobileapp/models/product_model.dart';
 import 'package:grocerymobileapp/screens/mainscreen.dart';
 import 'package:grocerymobileapp/widgets/product_list.dart';
+
+import '../constant.dart';
 
 class HomePage extends StatefulWidget {
   static String id = 'home';

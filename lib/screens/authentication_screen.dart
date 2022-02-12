@@ -22,18 +22,6 @@ class _AuthenticationState extends State<Authentication> {
           children: [
             //page background
             Container(
-              child: Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.bottomLeft,
-                    colors: [
-                      Colors.black.withOpacity(0.2),
-                      Colors.black.withOpacity(0.4)
-                    ],
-                    end: Alignment.topRight,
-                  ),
-                ),
-              ),
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('assets/images/bg.jpg'),

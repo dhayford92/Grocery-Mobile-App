@@ -38,12 +38,16 @@ class _LoginState extends State<Login> {
             const SizedBox(height: 40),
             TextFormField(
                 controller: email,
+                keyboardType: TextInputType.emailAddress,
+                textInputAction: TextInputAction.next,
                 validator: (value) =>
                     value == null ? 'Email field must not be empty' : '',
                 decoration: authdecorator('Email', Icons.email)),
             const SizedBox(height: 15),
             TextFormField(
                 controller: password,
+                obscureText: true,
+                textInputAction: TextInputAction.done,
                 validator: (value) =>
                     value == null ? 'Password field must not be empty' : '',
                 decoration: authdecorator('Password', Icons.lock)),
@@ -52,7 +56,8 @@ class _LoginState extends State<Login> {
               height: 60,
               child: AuthButton(
                 title: 'Login',
-                onPress: doLogin,
+                onPress: () =>
+                    Navigator.of(context).pushReplacementNamed(HomePage.id),
               ),
             ),
             const SizedBox(height: 5),

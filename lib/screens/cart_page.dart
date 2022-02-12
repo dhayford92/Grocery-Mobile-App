@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:grocerymobileapp/components/buttons.dart';
 import 'package:grocerymobileapp/components/colours.dart';
 import 'package:grocerymobileapp/components/decorators.dart';
-import 'package:grocerymobileapp/models/cartitem_model.dart';
-import 'package:grocerymobileapp/models/product_model.dart';
 import 'package:grocerymobileapp/screens/checkout.dart';
 import 'package:grocerymobileapp/widgets/cartitem_card.dart';
+
+import '../constant.dart';
 
 class CartScreen extends StatefulWidget {
   static String id = 'cart';
@@ -16,29 +16,13 @@ class CartScreen extends StatefulWidget {
 }
 
 class _CartScreenState extends State<CartScreen> {
-  //cart list
-  final List<CartItem> _cartItem = [
-    CartItem(
-      id: 0,
-      totalPrice: 230,
-      product: prod_list[0],
-      quantity: 2,
-    ),
-    CartItem(
-      id: 1,
-      totalPrice: 120,
-      product: prod_list[1],
-      quantity: 1,
-    ),
-  ];
-
   //variable for total
   double total = 0.00;
 
   @override
   Widget build(BuildContext context) {
-    for (int i = 0; _cartItem.length - 1 >= i; i++) {
-      total += _cartItem[i].totalPrice!;
+    for (int i = 0; cartItem.length - 1 >= i; i++) {
+      total += cartItem[i].totalPrice!;
     }
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -67,11 +51,18 @@ class _CartScreenState extends State<CartScreen> {
               child: SizedBox(
                 width: mediaSize(context).width * 1,
                 height: mediaSize(context).height / 1.5,
-                child: ListView.builder(
-                    itemCount: _cartItem.length,
-                    itemBuilder: (_, index) {
-                      return CartItemCard(cartItem: _cartItem[index]);
-                    }),
+                child: cartItem.isEmpty
+                    ? Center(
+                        child: Text(
+                        'No items added, please keep shopping',
+                        softWrap: true,
+                        style: Theme.of(context).textTheme.subtitle1,
+                      ))
+                    : ListView.builder(
+                        itemCount: cartItem.length,
+                        itemBuilder: (_, index) {
+                          return CartItemCard(cartItem: cartItem[index]);
+                        }),
               ),
             ),
           ),
@@ -83,7 +74,7 @@ class _CartScreenState extends State<CartScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Items: ( ${_cartItem.length} )',
+                    'Items: ( ${cartItem.length} )',
                     style: const TextStyle(
                         fontWeight: FontWeight.w600, fontSize: 20),
                   ),
@@ -105,9 +96,11 @@ class _CartScreenState extends State<CartScreen> {
             child: Align(
               alignment: Alignment.bottomCenter,
               child: CustomButton(
-                  icon: Icons.check_box_outlined,
-                  title: 'Checkout',
-                  onPress: () =>Navigator.of(context).pushNamed(CheckoutScreen.id),),
+                icon: Icons.check_box_outlined,
+                title: 'Checkout',
+                onPress: () =>
+                    Navigator.of(context).pushNamed(CheckoutScreen.id),
+              ),
             ),
           )
         ],

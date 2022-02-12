@@ -1,5 +1,6 @@
 // ignore_for_file: constant_identifier_names
 
+import 'cartitem_model.dart';
 import 'product_model.dart';
 import 'user_model.dart';
 
@@ -7,7 +8,15 @@ import 'user_model.dart';
 enum OrderType { PickUp, Delivery }
 
 //order status
-enum OrderStatus { Pending, Confirmed, Cancelled, Delivered, Refund }
+enum OrderStatus {
+  Pending,
+  Confirmed,
+  Cancelled,
+  Sending,
+  ReadyPickup,
+  Delivered,
+  Refund
+}
 
 //order model
 class Order {
@@ -15,8 +24,8 @@ class Order {
   String? orderID;
   String? total;
   String? paymentType;
-  String? orderType;
-  String? orderStatus;
+  OrderType? orderType;
+  OrderStatus? orderStatus;
   String? note;
   bool? isOrdered;
   String? created;
@@ -24,7 +33,7 @@ class Order {
   User? user;
   Coupon? coupon;
   ShippingAddress? shippingTo;
-  List<Product>? items;
+  List<CartItem>? items;
 
   Order({
     this.id,
@@ -60,9 +69,9 @@ class Order {
         ? ShippingAddress.fromJson(json['shipping_to'])
         : null;
     if (json['items'] != null) {
-      items = <Product>[];
+      items = <CartItem>[];
       json['items'].forEach((v) {
-        items!.add(Product.fromJson(v));
+        items!.add(CartItem.fromJson(v));
       });
     }
   }

@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:grocerymobileapp/components/buttons.dart';
 import 'package:grocerymobileapp/components/colours.dart';
+import 'package:grocerymobileapp/screens/help_page.dart';
 import 'package:grocerymobileapp/screens/home.dart';
+import 'package:grocerymobileapp/screens/orders_page.dart';
 import 'package:grocerymobileapp/utils/carticon.dart';
 
 import 'authentication_screen.dart';
+import 'favorite_page.dart';
+import 'profile_screen.dart';
 
 class MainScreen extends StatefulWidget {
   static String id = 'main';
@@ -79,17 +83,17 @@ class _MainScreenState extends State<MainScreen> {
             MenuListButton(
               icon: Icons.shopping_bag_outlined,
               title: 'Orders',
-              onPress: () => doOpenPage(HomePage.id),
+              onPress: () => doOpenPage(OrdersScreen.id),
             ),
             MenuListButton(
               icon: Icons.favorite_border_outlined,
               title: 'Favorite',
-              onPress: () => doOpenPage(HomePage.id),
+              onPress: () => doOpenPage(FavoriteScreen.id),
             ),
             MenuListButton(
               icon: Icons.person_outlined,
               title: 'Profile',
-              onPress: () => doOpenPage(HomePage.id),
+              onPress: () => doOpenPage(ProfileScreen.id),
             ),
             MenuListButton(
               icon: Icons.mail_outlined,
@@ -99,7 +103,7 @@ class _MainScreenState extends State<MainScreen> {
             MenuListButton(
               icon: Icons.help_outlined,
               title: 'Help',
-              onPress: () => doOpenPage(HomePage.id),
+              onPress: () => doOpenPage(HelpScreen.id),
             ),
             MenuListButton(
               icon: Icons.info_outline,

@@ -1,33 +1,29 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:grocerymobileapp/components/buttons.dart';
 import 'package:grocerymobileapp/components/colours.dart';
-import 'package:grocerymobileapp/constant.dart';
-import 'package:grocerymobileapp/models/product_model.dart';
+import 'package:grocerymobileapp/components/decorators.dart';
 
-class ProductListCard extends StatefulWidget {
-  ProductListCard({Key? key, this.category}) : super(key: key);
+import '../constant.dart';
 
-  int? category;
+class FavoriteCard extends StatefulWidget {
+  const FavoriteCard({Key? key}) : super(key: key);
 
   @override
-  _ProductListCardState createState() => _ProductListCardState();
+  _FavoriteCardState createState() => _FavoriteCardState();
 }
 
-class _ProductListCardState extends State<ProductListCard> {
-  //favorite active
-  bool is_active = false;
-  
+class _FavoriteCardState extends State<FavoriteCard> {
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return SizedBox(
+      width: mediaSize(context).width,
+      height: mediaSize(context).height,
       child: StaggeredGridView.countBuilder(
-          shrinkWrap: true,
           crossAxisCount: 2,
           crossAxisSpacing: 10,
           mainAxisSpacing: 12,
-          itemCount: prod_list.length,
+          itemCount: fav_list.length,
           itemBuilder: (context, index) {
             return Container(
               decoration: BoxDecoration(
@@ -45,27 +41,15 @@ class _ProductListCardState extends State<ProductListCard> {
                   //image and icon fav
                   Stack(
                     children: [
-                      //favorite icon
+                      //remove icon
                       Align(
-                        alignment: Alignment.topLeft,
+                        alignment: Alignment.topRight,
                         child: IconButton(
                           onPressed: () {
-                            if (is_active == false) {
-                              setState(() {
-                                is_active = true;
-                              });
-                            } else {
-                              setState(() {
-                                is_active = false;
-                              });
-                            }
+                            fav_list.remove(index);
                           },
-                          icon: is_active == false? const Icon(
-                            Icons.favorite_outline,
-                            color: Colors.red,
-                            size: 30,
-                          ):const Icon(
-                            Icons.favorite_rounded,
+                          icon: const Icon(
+                            Icons.close,
                             color: Colors.red,
                             size: 30,
                           ),
@@ -94,14 +78,14 @@ class _ProductListCardState extends State<ProductListCard> {
                       children: [
                         const SizedBox(height: 20),
                         //title
-                        Text('${prod_list[index].title}',
+                        Text('${fav_list[index].product!.title}',
                             style:
                                 Theme.of(context).textTheme.headline6!.copyWith(
                                       fontWeight: FontWeight.bold,
                                     )),
                         const SizedBox(height: 8),
                         //Description
-                        Text('${prod_list[index].description}',
+                        Text('${fav_list[index].product!.description}',
                             softWrap: true,
                             maxLines: 2,
                             style:
@@ -116,7 +100,7 @@ class _ProductListCardState extends State<ProductListCard> {
                             Column(
                               children: [
                                 //product price
-                                Text('₵ ${prod_list[index].price}',
+                                Text('₵ ${fav_list[index].product!.price}',
                                     style: Theme.of(context)
                                         .textTheme
                                         .headline6!
@@ -126,7 +110,7 @@ class _ProductListCardState extends State<ProductListCard> {
                                 const SizedBox(height: 5),
                                 //size
                                 Text(
-                                  '${prod_list[index].sizeType}',
+                                  '${fav_list[index].product!.sizeType}',
                                   style: Theme.of(context)
                                       .textTheme
                                       .bodyText2!
@@ -137,7 +121,7 @@ class _ProductListCardState extends State<ProductListCard> {
                               ],
                             ),
                             //buttons
-                            ViewButton(product: prod_list[index]),
+                            ViewButton(product: fav_list[index].product!),
                           ],
                         ),
                       ],

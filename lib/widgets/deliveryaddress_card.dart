@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:grocerymobileapp/components/colours.dart';
 import 'package:grocerymobileapp/components/decorators.dart';
+import 'package:grocerymobileapp/screens/addlocation.dart';
 
 class DeliveryAddressCard extends StatefulWidget {
   DeliveryAddressCard({Key? key, required this.isActive}) : super(key: key);
@@ -17,7 +18,7 @@ class _DeliveryAddressCardState extends State<DeliveryAddressCard> {
     return Row(
       children: [
         GestureDetector(
-          onTap: () {},
+          onTap: () => Navigator.of(context).pushNamed(AddNewLocation.id),
           child: Card(
             shadowColor: Colors.black26,
             child: Padding(
@@ -80,9 +81,9 @@ class _DeliveryAddressCardState extends State<DeliveryAddressCard> {
                             ),
                             const SizedBox(width: 10),
                             const Text(
-                                'Ghana, Accra Airport Resdientail Str',
-                                softWrap: true,
-                                ),
+                              'Ghana, Accra Airport Resdientail Str',
+                              softWrap: true,
+                            ),
                           ],
                         ),
                         //mobile number

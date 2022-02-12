@@ -6,7 +6,6 @@ class User {
   String? number;
   String? tokens;
 
-
   User({
     this.id,
     this.password,
@@ -35,8 +34,6 @@ class User {
   }
 }
 
-
-
 //shipping address
 class ShippingAddress {
   int? id;
@@ -46,13 +43,14 @@ class ShippingAddress {
   bool? isActive;
   User? user;
 
-  ShippingAddress(
-      {this.id,
-      this.country,
-      this.city,
-      this.address,
-      this.isActive,
-      this.user,});
+  ShippingAddress({
+    this.id,
+    this.country,
+    this.city,
+    this.address,
+    this.isActive,
+    this.user,
+  });
 
   ShippingAddress.fromJson(Map<String, dynamic> json) {
     id = json['id'];

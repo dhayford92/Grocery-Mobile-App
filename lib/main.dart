@@ -2,9 +2,14 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:grocerymobileapp/components/colours.dart';
+import 'package:grocerymobileapp/screens/addlocation.dart';
 import 'package:grocerymobileapp/screens/cart_page.dart';
 import 'package:grocerymobileapp/screens/checkout.dart';
+import 'package:grocerymobileapp/screens/favorite_page.dart';
+import 'package:grocerymobileapp/screens/help_page.dart';
 import 'package:grocerymobileapp/screens/home.dart';
+import 'package:grocerymobileapp/screens/orders_page.dart';
+import 'package:grocerymobileapp/screens/profile_screen.dart';
 
 import 'screens/authentication_screen.dart';
 
@@ -27,8 +32,7 @@ class MyApp extends StatelessWidget {
           buttonColor: primaryColour,
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(primaryColour)
-            ),
+                backgroundColor: MaterialStateProperty.all(primaryColour)),
           ),
           canvasColor: Colors.white),
       home: const SplashScreen(),
@@ -37,6 +41,11 @@ class MyApp extends StatelessWidget {
         HomePage.id: (context) => const HomePage(),
         CartScreen.id: (context) => const CartScreen(),
         CheckoutScreen.id: (context) => const CheckoutScreen(),
+        OrdersScreen.id: (context) => const OrdersScreen(),
+        FavoriteScreen.id: (context) => const FavoriteScreen(),
+        ProfileScreen.id: (context) => const ProfileScreen(),
+        AddNewLocation.id: (context) => const AddNewLocation(),
+        HelpScreen.id: (context) => const HelpScreen(),
       },
     );
   }
@@ -54,7 +63,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(const Duration(seconds: 4),
-        () => Navigator.of(context).pushReplacementNamed(HomePage.id));
+        () => Navigator.of(context).pushReplacementNamed(Authentication.id));
   }
 
   @override
@@ -106,9 +115,7 @@ class _SplashScreenState extends State<SplashScreen> {
 }
 
 
-//thank you page
-//favorite page
-//order page
+
 //notifications page
-//profile page
 //help page
+//about us

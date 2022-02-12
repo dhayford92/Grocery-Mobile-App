@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:grocerymobileapp/components/buttons.dart';
 import 'package:grocerymobileapp/components/colours.dart';
 import 'package:grocerymobileapp/screens/home.dart';
+import 'package:grocerymobileapp/screens/orders_page.dart';
 
 class OrderSuccessCard extends StatelessWidget {
   const OrderSuccessCard({Key? key}) : super(key: key);
@@ -30,7 +31,7 @@ class OrderSuccessCard extends StatelessWidget {
               ),
             ),
             const Text(
-              'Successfully',
+              'Successful',
               style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
             ),
             const SizedBox(height: 20),
@@ -52,7 +53,7 @@ class OrderSuccessCard extends StatelessWidget {
                 )),
             const SizedBox(height: 20),
             TextButton(
-              onPressed: () {},
+              onPressed: () =>Navigator.of(context).pushReplacementNamed(OrdersScreen.id),
               child: Text(
                 'Go to orders',
                 style: Theme.of(context).textTheme.subtitle1,

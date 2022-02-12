@@ -42,6 +42,8 @@ searchDecoration() => InputDecoration(
       ),
     );
 
+
+
 couponDecoration() => InputDecoration(
       hintText: 'coupon code here',
       labelText: 'Coupon',
