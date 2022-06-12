@@ -88,7 +88,7 @@ class _AuthenticationState extends State<Authentication> {
                             ),
                           ),
                           SizedBox(
-                            width: mediaSize(context).width * 1,
+                            width: mediaSize(context).width,
                             height: 350,
                             child: const TabBarView(
                               children: [

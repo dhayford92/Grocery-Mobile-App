@@ -1,8 +1,14 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:grocerymobileapp/components/buttons.dart';
 import 'package:grocerymobileapp/components/decorators.dart';
 import 'package:grocerymobileapp/screens/home.dart';
-import 'package:grocerymobileapp/screens/mainscreen.dart';
+import 'package:provider/provider.dart';
+
+import '../../models/user_model.dart';
+import '../../services/auth.dart';
+import '../../utils/local_store.dart';
+import '../../utils/user_provider.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -13,21 +19,16 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   final formKey = GlobalKey<FormState>();
-  TextEditingController email = TextEditingController();
-  TextEditingController password = TextEditingController();
+  final auth = Auth();
+  late User user;
+
+  final email = TextEditingController();
+  final password = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    //login function
-    void doLogin() {
-      final form = formKey.currentState;
-      if (form!.validate()) {
-        form.save();
-        Navigator.of(context).pushReplacementNamed(HomePage.id);
-      } else {
-        print('error message');
-      }
-    }
+    UserProvider userProvider =
+        Provider.of<UserProvider>(context, listen: false);
 
     return Expanded(
       child: Form(
@@ -40,6 +41,11 @@ class _LoginState extends State<Login> {
                 controller: email,
                 keyboardType: TextInputType.emailAddress,
                 textInputAction: TextInputAction.next,
+                onSaved: (value) {
+                  setState(() {
+                    email.text = value!;
+                  });
+                },
                 validator: (value) =>
                     value == null ? 'Email field must not be empty' : '',
                 decoration: authdecorator('Email', Icons.email)),
@@ -48,6 +54,11 @@ class _LoginState extends State<Login> {
                 controller: password,
                 obscureText: true,
                 textInputAction: TextInputAction.done,
+                onSaved: (value) {
+                  setState(() {
+                    password.text = value!;
+                  });
+                },
                 validator: (value) =>
                     value == null ? 'Password field must not be empty' : '',
                 decoration: authdecorator('Password', Icons.lock)),
@@ -56,8 +67,52 @@ class _LoginState extends State<Login> {
               height: 60,
               child: AuthButton(
                 title: 'Login',
-                onPress: () =>
-                    Navigator.of(context).pushReplacementNamed(HomePage.id),
+                onPress: () {
+                  Navigator.of(context)
+                              .pushReplacementNamed(HomePage.id);
+                  //login function
+                  // void doLogin(String email, String pass) {
+                  final form = formKey.currentState;
+                  //check if forms are valid
+                //   if (form!.validate()) {
+                //     form.save();
+                //     final Future<Map<String, dynamic>> response =
+                //         auth.login(password.text, email.text);
+                    
+                //     response.then(
+                //       (response) {
+                //         //check for correct status
+                //         if (response['status']) {
+                //           user = response['data'];
+                //           userProvider.setUser(user);
+                //           Navigator.of(context)
+                //               .pushReplacementNamed(HomePage.id);
+                //         } else {
+                //           AwesomeDialog(
+                //             context: context,
+                //             dialogType: DialogType.ERROR,
+                //             animType: AnimType.BOTTOMSLIDE,
+                //             title: 'Fail to Login',
+                //             desc: response['message'].toString(),
+                //             btnOkOnPress: () {
+                //               UserPref().getRemoveUser();
+                //             },
+                //           ).show();
+                //         }
+                //       },
+                //     );
+                //   } else {
+                //     AwesomeDialog(
+                //       context: context,
+                //       dialogType: DialogType.WARNING,
+                //       animType: AnimType.BOTTOMSLIDE,
+                //       title: 'Invaild form',
+                //       desc: 'Please fill the form properly',
+                //       btnOkOnPress: () {},
+                //     ).show();
+                //   }
+                //   // }
+                },
               ),
             ),
             const SizedBox(height: 5),

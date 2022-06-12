@@ -164,10 +164,11 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                                 });
                               }
                             },
-                            controlsBuilder: (context,
-                                {onStepCancel, onStepContinue}) {
-                              return Row();
-                            },
+                            // controlsBuilder: (context,
+                            //     {onStepCancel, onStepContinue}) {
+                            //   assert(context != null);
+                            //   return Row();
+                            // },
                           ),
                         ),
                       ],

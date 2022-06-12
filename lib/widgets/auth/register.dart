@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:grocerymobileapp/components/buttons.dart';
 import 'package:grocerymobileapp/components/decorators.dart';
 
+import '../../screens/home.dart';
+
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
 
@@ -23,7 +25,7 @@ class _SignUpState extends State<SignUp> {
       final form = _formKey.currentState;
       if (form!.validate()) {
         form.save();
-        Navigator.of(context).pushReplacementNamed('routeName');
+        Navigator.of(context).pushReplacementNamed(HomePage.id);
       } else {
         print('error message');
       }
@@ -75,7 +77,8 @@ class _SignUpState extends State<SignUp> {
               height: 60,
               child: AuthButton(
                 title: 'Register',
-                onPress: () => doRegister,
+                onPress: () =>
+                    Navigator.of(context).pushReplacementNamed(HomePage.id),
               ),
             ),
           ],

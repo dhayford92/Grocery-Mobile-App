@@ -5,6 +5,8 @@ import 'package:grocerymobileapp/screens/help_page.dart';
 import 'package:grocerymobileapp/screens/home.dart';
 import 'package:grocerymobileapp/screens/orders_page.dart';
 import 'package:grocerymobileapp/utils/carticon.dart';
+import 'package:grocerymobileapp/utils/user_provider.dart';
+import 'package:provider/provider.dart';
 
 import 'authentication_screen.dart';
 import 'favorite_page.dart';
@@ -28,6 +30,8 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    UserProvider userProvider =
+        Provider.of<UserProvider>(context, listen: false);
     return Scaffold(
       resizeToAvoidBottomInset: true,
       drawer: Drawer(
@@ -66,7 +70,7 @@ class _MainScreenState extends State<MainScreen> {
                 ),
                 const SizedBox(height: 5),
                 Text(
-                  '+233 00 000 0000',
+                  '+233 2349876784',
                   softWrap: true,
                   maxLines: 1,
                   style: Theme.of(context).textTheme.subtitle2,

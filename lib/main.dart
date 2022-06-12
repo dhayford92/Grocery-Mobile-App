@@ -10,7 +10,11 @@ import 'package:grocerymobileapp/screens/help_page.dart';
 import 'package:grocerymobileapp/screens/home.dart';
 import 'package:grocerymobileapp/screens/orders_page.dart';
 import 'package:grocerymobileapp/screens/profile_screen.dart';
+import 'package:grocerymobileapp/utils/local_store.dart';
+import 'package:grocerymobileapp/utils/user_provider.dart';
+import 'package:provider/provider.dart';
 
+import 'models/user_model.dart';
 import 'screens/authentication_screen.dart';
 
 void main() {
@@ -23,30 +27,38 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Groscery App',
-      theme: ThemeData.light().copyWith(
-          scaffoldBackgroundColor: bgColour,
-          primaryColor: primaryColour,
-          buttonColor: primaryColour,
-          elevatedButtonTheme: ElevatedButtonThemeData(
-            style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(primaryColour)),
-          ),
-          canvasColor: Colors.white),
-      home: const SplashScreen(),
-      routes: {
-        Authentication.id: (context) => const Authentication(),
-        HomePage.id: (context) => const HomePage(),
-        CartScreen.id: (context) => const CartScreen(),
-        CheckoutScreen.id: (context) => const CheckoutScreen(),
-        OrdersScreen.id: (context) => const OrdersScreen(),
-        FavoriteScreen.id: (context) => const FavoriteScreen(),
-        ProfileScreen.id: (context) => const ProfileScreen(),
-        AddNewLocation.id: (context) => const AddNewLocation(),
-        HelpScreen.id: (context) => const HelpScreen(),
-      },
+    Future<User> getUserData() => UserPref().getUser();
+
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+            create: (BuildContext context) => UserProvider()),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Groscery App',
+        theme: ThemeData.light().copyWith(
+            scaffoldBackgroundColor: bgColour,
+            primaryColor: primaryColour,
+            buttonColor: primaryColour,
+            elevatedButtonTheme: ElevatedButtonThemeData(
+              style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(primaryColour)),
+            ),
+            canvasColor: Colors.white),
+        home: const SplashScreen(),
+        routes: {
+          Authentication.id: (context) => const Authentication(),
+          HomePage.id: (context) => const HomePage(),
+          CartScreen.id: (context) => const CartScreen(),
+          CheckoutScreen.id: (context) => const CheckoutScreen(),
+          OrdersScreen.id: (context) => const OrdersScreen(),
+          FavoriteScreen.id: (context) => const FavoriteScreen(),
+          ProfileScreen.id: (context) => const ProfileScreen(),
+          AddNewLocation.id: (context) => const AddNewLocation(),
+          HelpScreen.id: (context) => const HelpScreen(),
+        },
+      ),
     );
   }
 }
@@ -117,5 +129,6 @@ class _SplashScreenState extends State<SplashScreen> {
 
 
 //notifications page
-//help page
 //about us
+//api connects
+//Classify function
